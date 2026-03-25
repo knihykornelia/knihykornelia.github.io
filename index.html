@@ -1,10 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="sk">
 <head>
-    <title>Knihy Kornelia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knihy Kornélia Ilava</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e8e3db;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #6c63ff;
+}
+
+header img {
+    width: 60px;
+    margin-right: 15px;
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+/* HERO */
+.hero {
+    width: 100%;
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+}
+
+/* ABOUT */
+.about {
+    display: flex;
+    padding: 60px;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 60px;
+    margin: 0;
+}
+
+.about-text p {
+    margin-top: 20px;
+}
+
+.about-images {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+}
+
+.about-images img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+/* CONTACT SECTION */
+.contact {
+    background-color: #3b332c;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.contact h2 {
+    font-size: 32px;
+}
+
+/* FOOTER */
+.footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    background-color: #e8e3db;
+}
+
+.footer div {
+    text-align: center;
+}
+</style>
 </head>
+
 <body>
-    <h1>Cigansky special ultra zadarmo</h1>
-    <p>SOLOP CIP CIP CIP HOP CIP CIP</p>
+
+<!-- HEADER -->
+<header>
+    <img src="https://via.placeholder.com/60" alt="logo">
+    <h1>Knihy Kornélia Ilava</h1>
+</header>
+
+<!-- HERO IMAGE -->
+<section class="hero">
+    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" alt="knižnica">
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+    <div class="about-text">
+        <h2>Kto sme?</h2>
+        <p>Rodinné kníhkupectvo, kde okrem kníh nájdete praženú kávu, sypané čaje a slovenské ručné darčeky.</p>
+    </div>
+
+    <div class="about-images">
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+        <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93">
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+    <h2>Kde nás nájdete?</h2>
+    <p>Moyzesova 123<br>Ilava, 019 01</p>
+    <p>Po–Pia: 09:00 – 16:00</p>
+    <p>obchod@ilava.sk<br>0910 111 975</p>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div>
+        <h3>Kde nás nájdete?</h3>
+        <p>Moyzesova 123<br>Ilava</p>
+    </div>
+
+    <div>
+        <h3>Otváracie hodiny</h3>
+        <p>Po–Pia<br>09:00 – 16:00</p>
+    </div>
+
+    <div>
+        <h3>Kontakt</h3>
+        <p>obchod@ilava.sk<br>0910 111 975</p>
+    </div>
+</div>
+
 </body>
 </html>
