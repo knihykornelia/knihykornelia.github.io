@@ -161,14 +161,18 @@
   transition: transform 0.2s ease, background 0.2s ease;
   box-shadow: var(--shadow);
 }
-
+.btn.primary {
+  background: var(--accent);
+  color: white !important;
+}
     .btn.secondary {
   border-radius: 999px;
   font-weight: 600;
 }
-    .btn.secondary:hover {
-  background: var(--accent);
-  color: white;
+   .btn.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
 }
     .btn {
   display: inline-flex;
@@ -713,7 +717,7 @@
         <a href="#o-nas">O nás</a>
         <a href="#ponuka">Ponuka</a>
         <a href="#kontakt">Kontakt</a>
-        <a href="mailto:obchod@ilvjs.sk" class="btn">Napíšte nám</a>
+        <a href="mailto:obchod@ilvjs.sk" class="btn primary">Napíšte nám</a>
       </nav>
     </div>
   </header>
