@@ -487,52 +487,18 @@
       color: var(--muted);
     }
 
-    /* Contact / info */
-    .contact-section {
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(circle at top left, rgba(111, 78, 55, 0.5) 0%, rgba(58, 48, 40, 1) 70%);
+.contact-section {
+  background: linear-gradient(135deg, #3a3028, #514137);
   color: white;
   border-radius: 40px;
   padding: 48px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-}
-
-/* jemné svetlo */
-.contact-section::before {
-  content: "";
-  position: absolute;
-  top: -100px;
-  left: -100px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
-  pointer-events: none;
-}
-
-/* jemný glow zdola */
-.contact-section::after {
-  content: "";
-  position: absolute;
-  bottom: -120px;
-  right: -120px;
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 70%);
-  pointer-events: none;
+  box-shadow: var(--shadow);
 }
 .info-card {
   background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 22px;
   padding: 22px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
-}
-
-.info-card:hover {
-  transform: translateY(-5px);
 }
 
     .info-card h3 {
@@ -541,13 +507,12 @@
       color: #fff;
     }
 
-   .map-box {
+  .map-box {
   border-radius: 28px;
   overflow: hidden;
+  min-height: 100%;
   background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.12);
 }
 
     .map-box iframe {
