@@ -142,23 +142,28 @@
     .nav a:hover {
       color: var(--text);
     }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease;
-      box-shadow: var(--shadow);
+    .btn:hover {
+      background: #4e3525;
+      transform: translateY(-1px);
     }
-
+    .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white; /* ← toto je dôležité */
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  box-shadow: var(--shadow);
+}
+.btn {
+  color: white !important;
+}
     .btn:hover {
       background: var(--accent-dark);
       transform: translateY(-1px);
