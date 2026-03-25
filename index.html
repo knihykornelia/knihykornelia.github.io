@@ -1,153 +1,797 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Knihy Kornélia Ilava</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knihy Kornélia Ilava</title>
+  <meta
+    name="description"
+    content="Rodinné kníhkupectvo v Ilave. Knihy, pražená káva, sypané čaje a slovenské ručne vyrábané darčeky."
+  />
+  <style>
+    :root {
+      --bg: #ece6de;
+      --surface: #f7f2ec;
+      --surface-2: #fffaf5;
+      --text: #2f2924;
+      --muted: #6d645c;
+      --accent: #6f4e37;
+      --accent-dark: #4e3525;
+      --line: #d8cfc4;
+      --shadow: 0 10px 30px rgba(47, 41, 36, 0.10);
+      --radius: 24px;
+      --max: 1200px;
+    }
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #e8e3db;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-/* HEADER */
-header {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 2px solid #6c63ff;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-header img {
-    width: 60px;
-    margin-right: 15px;
-}
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
 
-header h1 {
-    font-size: 28px;
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-/* HERO */
-.hero {
-    width: 100%;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.hero img {
-    width: 100%;
-    height: auto;
-}
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
 
-/* ABOUT */
-.about {
-    display: flex;
-    padding: 60px;
-    gap: 40px;
-    align-items: center;
-}
+    .section {
+      padding: 80px 0;
+    }
 
-.about-text {
-    flex: 1;
-}
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.05;
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+    }
 
-.about-text h2 {
-    font-size: 60px;
-    margin: 0;
-}
+    .section-text {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin: 0;
+    }
 
-.about-text p {
-    margin-top: 20px;
-}
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(236, 230, 222, 0.88);
+      border-bottom: 1px solid rgba(216, 207, 196, 0.85);
+    }
 
-.about-images {
-    flex: 1;
-    display: flex;
-    gap: 20px;
-}
+    .header-inner {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-.about-images img {
-    width: 100%;
-    border-radius: 15px;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
 
-/* CONTACT SECTION */
-.contact {
-    background-color: #3b332c;
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-}
+    .brand-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #fff;
+      flex-shrink: 0;
+    }
 
-.contact h2 {
-    font-size: 32px;
-}
+    .brand-text {
+      min-width: 0;
+    }
 
-/* FOOTER */
-.footer {
-    display: flex;
-    justify-content: space-around;
-    padding: 40px;
-    background-color: #e8e3db;
-}
+    .brand-name {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
 
-.footer div {
-    text-align: center;
-}
-</style>
+    .brand-subtitle {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255,255,255,0.4);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 60px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(111, 78, 55, 0.10);
+      color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.7rem, 6vw, 5.3rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin: 0 0 18px;
+    }
+
+    .hero-text {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .point {
+      background: rgba(255,255,255,0.5);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .point strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .point span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 560px;
+    }
+
+    .card-photo {
+      position: absolute;
+      overflow: hidden;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.6);
+      background: var(--surface);
+    }
+
+    .card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-large {
+      inset: 90px 0 0 90px;
+      height: 430px;
+    }
+
+    .photo-small-top {
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 250px;
+    }
+
+    .photo-small-circle {
+      top: 10px;
+      right: 0;
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+    }
+
+    .floating-box {
+      position: absolute;
+      left: 0;
+      bottom: 24px;
+      background: rgba(255, 250, 245, 0.95);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+      max-width: 280px;
+    }
+
+    .floating-box strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .floating-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Feature cards */
+    .features {
+      padding-top: 30px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .feature-card {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .about-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 420px;
+    }
+
+    .about-card {
+      background: rgba(255,255,255,0.48);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 34px;
+    }
+
+    .about-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .about-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+    }
+
+    .about-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .about-item span {
+      color: var(--muted);
+    }
+
+    /* Contact / info */
+    .contact-section {
+      background: linear-gradient(135deg, #3a3028, #514137);
+      color: white;
+      border-radius: 40px;
+      padding: 48px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .contact-section .section-text,
+    .contact-section p,
+    .contact-section a {
+      color: rgba(255,255,255,0.86);
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .info-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .map-box {
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      border: 0;
+      display: block;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 28px 0 40px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 520px;
+        margin-top: 10px;
+      }
+
+      .contact-cards {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .features-grid,
+      .contact-cards,
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .header-inner {
+        min-height: 74px;
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .contact-section {
+        padding: 30px 22px;
+        border-radius: 28px;
+      }
+
+      .about-card,
+      .feature-card {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(calc(100% - 20px), var(--max));
+      }
+
+      .brand-name {
+        font-size: 1.05rem;
+      }
+
+      .brand-subtitle {
+        font-size: 0.82rem;
+      }
+
+      .hero-title {
+        font-size: clamp(2.2rem, 12vw, 3.6rem);
+      }
+
+      .hero-text,
+      .section-text {
+        font-size: 1rem;
+      }
+
+      .hero-visual {
+        min-height: auto;
+        display: grid;
+        gap: 14px;
+      }
+
+      .card-photo,
+      .photo-large,
+      .photo-small-top,
+      .photo-small-circle,
+      .floating-box {
+        position: static;
+        width: 100%;
+        height: auto;
+        inset: auto;
+        border-radius: 24px;
+      }
+
+      .photo-small-circle {
+        border-radius: 24px;
+      }
+
+      .photo-large {
+        height: 260px;
+      }
+
+      .photo-small-top,
+      .photo-small-circle {
+        height: 200px;
+      }
+
+      .floating-box {
+        max-width: none;
+      }
+
+      .about-image-wrap img {
+        min-height: 280px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .contact-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .map-box iframe {
+        min-height: 280px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<header>
-    <img src="https://via.placeholder.com/60" alt="logo">
-    <h1>Knihy Kornélia Ilava</h1>
-</header>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <img src="logo.png" alt="Logo Knihy Kornélia Ilava" class="brand-logo" />
+        <div class="brand-text">
+          <p class="brand-name">Knihy Kornélia Ilava</p>
+          <p class="brand-subtitle">Rodinné kníhkupectvo s dušou</p>
+        </div>
+      </a>
 
-<!-- HERO IMAGE -->
-<section class="hero">
-    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" alt="knižnica">
-</section>
-
-<!-- ABOUT -->
-<section class="about">
-    <div class="about-text">
-        <h2>Kto sme?</h2>
-        <p>Rodinné kníhkupectvo, kde okrem kníh nájdete praženú kávu, sypané čaje a slovenské ručné darčeky.</p>
+      <nav class="nav">
+        <a href="#o-nas">O nás</a>
+        <a href="#ponuka">Ponuka</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="mailto:obchod@ilvjs.sk" class="btn">Napíšte nám</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="about-images">
-        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
-        <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93">
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Knihy • Káva • Čaje • Darčeky</span>
+          <h1 class="hero-title">Miesto, kde sa dobre číta a ešte lepšie cíti.</h1>
+          <p class="hero-text">
+            Rodinné kníhkupectvo v Ilave, kde nájdete obľúbené knihy, voňavú praženú kávu,
+            sypané čaje aj slovenské ručne vyrábané darčeky. Príďte si po príbeh, inšpiráciu
+            alebo len po chvíľu pokoja.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#kontakt" class="btn">Kde nás nájdete</a>
+            <a href="#o-nas" class="btn secondary">Spoznajte nás</a>
+          </div>
+
+          <div class="hero-points">
+            <div class="point">
+              <strong>Rodinný prístup</strong>
+              <span>Radi poradíme a pomôžeme s výberom.</span>
+            </div>
+            <div class="point">
+              <strong>Viac než knihy</strong>
+              <span>Káva, čaje a milé darčeky na jednom mieste.</span>
+            </div>
+            <div class="point">
+              <strong>Lokálne a osobné</strong>
+              <span>Miesto s atmosférou priamo v Ilave.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="card-photo photo-small-top">
+            <img src="foto1.jpg" alt="Interiér kníhkupectva" />
+          </div>
+
+          <div class="card-photo photo-small-circle">
+            <img src="foto2.jpg" alt="Ponuka kníhkupectva" />
+          </div>
+
+          <div class="card-photo photo-large">
+            <img src="foto3.jpg" alt="Knihy na pulte" />
+          </div>
+
+          <div class="floating-box">
+            <strong>Príďte si oddýchnuť</strong>
+            <p>U nás nejde len o nákup. Chceme, aby ste sa cítili príjemne a radi sa vracali.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section features" id="ponuka">
+      <div class="container">
+        <h2 class="section-title">Čo u nás nájdete</h2>
+        <p class="section-text">
+          Ponuka, ktorá spája radosť z čítania, príjemnú atmosféru a malé veci,
+          ktoré potešia.
+        </p>
+
+        <div class="features-grid" style="margin-top: 32px;">
+          <article class="feature-card">
+            <h3>Knihy pre každého</h3>
+            <p>
+              Beletria, detské knihy, darčekové tituly aj zaujímavé novinky pre malých aj veľkých čitateľov.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Pražená káva a čaje</h3>
+            <p>
+              Voňavá káva a sypané čaje, ktoré dotvárajú atmosféru a robia návštevu ešte príjemnejšou.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Ručne vyrábané darčeky</h3>
+            <p>
+              Slovenské produkty a milé drobnosti, ktoré potešia ako pozornosť pre vás aj vašich blízkych.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="o-nas">
+      <div class="container about-grid">
+        <div class="about-image-wrap">
+          <img src="interier.jpg" alt="Pohľad do kníhkupectva Knihy Kornélia Ilava" />
+        </div>
+
+        <div class="about-card">
+          <h2 class="section-title">Kto sme?</h2>
+          <p class="section-text">
+            Sme rodinné kníhkupectvo, ktoré vzniklo z lásky ku knihám, príjemnej atmosfére a osobnému prístupu.
+            Chceme, aby si u nás každý našiel niečo pre seba — dobrú knihu, malý darček alebo chvíľu pokoja.
+          </p>
+
+          <div class="about-list">
+            <div class="about-item">
+              <strong>Osobný výber</strong>
+              <span>Radi pomôžeme vybrať knihu podľa veku, žánru alebo príležitosti.</span>
+            </div>
+
+            <div class="about-item">
+              <strong>Príjemná atmosféra</strong>
+              <span>Miesto, kde sa človek necíti ako v supermarkete, ale vítaný.</span>
+            </div>
+
+            <div class="about-item">
+              <strong>Poctivý lokálny charakter</strong>
+              <span>Spájame knihy s voňavou kávou, čajmi a peknými slovenskými výrobkami.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt">
+      <div class="container">
+        <div class="contact-section">
+          <div class="contact-grid">
+            <div>
+              <h2 class="section-title" style="margin-bottom: 12px;">Kde nás nájdete?</h2>
+              <p class="section-text" style="max-width: 560px;">
+                Radi vás privítame osobne. Zastavte sa po novú knihu, darček alebo len načerpať
+                príjemnú atmosféru.
+              </p>
+
+              <div class="contact-cards">
+                <div class="info-card">
+                  <h3>Adresa</h3>
+                  <p>
+                    Moyzesova 123<br />
+                    Ilava, 019 01
+                  </p>
+                </div>
+
+                <div class="info-card">
+                  <h3>Otváracie hodiny</h3>
+                  <p>
+                    Pondelok – Piatok<br />
+                    09:00 – 16:00
+                  </p>
+                </div>
+
+                <div class="info-card">
+                  <h3>Kontakt</h3>
+                  <p>
+                    <a href="mailto:obchod@ilvjs.sk">obchod@ilvjs.sk</a><br />
+                    <a href="tel:+421910111975">0910 111 975</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="map-box">
+              <iframe
+                title="Mapa - Knihy Kornélia Ilava"
+                src="https://www.google.com/maps?q=Ilava%20Moyzesova%20123&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 Knihy Kornélia Ilava</div>
+      <div>Vytvorené s láskou ku knihám</div>
     </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact">
-    <h2>Kde nás nájdete?</h2>
-    <p>Moyzesova 123<br>Ilava, 019 01</p>
-    <p>Po–Pia: 09:00 – 16:00</p>
-    <p>obchod@ilava.sk<br>0910 111 975</p>
-</section>
-
-<!-- FOOTER -->
-<div class="footer">
-    <div>
-        <h3>Kde nás nájdete?</h3>
-        <p>Moyzesova 123<br>Ilava</p>
-    </div>
-
-    <div>
-        <h3>Otváracie hodiny</h3>
-        <p>Po–Pia<br>09:00 – 16:00</p>
-    </div>
-
-    <div>
-        <h3>Kontakt</h3>
-        <p>obchod@ilava.sk<br>0910 111 975</p>
-    </div>
-</div>
+  </footer>
 
 </body>
 </html>
