@@ -243,10 +243,78 @@
       font-size: 0.95rem;
     }
 
-    .hero-visual {
-      position: relative;
-      min-height: 560px;
-    }
+    .hero-visual.clean-gallery {
+  position: relative;
+  min-height: 620px;
+}
+
+.gallery-main,
+.gallery-side {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 18px 45px rgba(47, 41, 36, 0.14);
+  border: 1px solid rgba(255,255,255,0.7);
+  background: var(--surface);
+}
+
+.gallery-main img,
+.gallery-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-main {
+  right: 0;
+  top: 90px;
+  width: 78%;
+  height: 430px;
+  z-index: 2;
+}
+
+.gallery-side-top {
+  left: 0;
+  top: 0;
+  width: 38%;
+  height: 210px;
+  z-index: 3;
+}
+
+.gallery-side-bottom {
+  right: 2%;
+  top: 0;
+  width: 34%;
+  height: 170px;
+  z-index: 3;
+  border-radius: 999px;
+}
+
+.clean-box {
+  position: absolute;
+  left: 0;
+  bottom: 18px;
+  z-index: 4;
+  max-width: 310px;
+  background: rgba(255, 250, 245, 0.96);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 22px 24px;
+  box-shadow: 0 14px 35px rgba(47, 41, 36, 0.12);
+}
+
+.clean-box strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+}
+
+.clean-box p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
 
     .card-photo {
       position: absolute;
@@ -522,11 +590,34 @@
         font-size: 1rem;
       }
 
-      .hero-visual {
-        min-height: auto;
-        display: grid;
-        gap: 14px;
-      }
+      .hero-visual.clean-gallery {
+  min-height: auto;
+  display: grid;
+  gap: 14px;
+}
+
+.gallery-main,
+.gallery-side,
+.clean-box {
+  position: static;
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+.gallery-main {
+  height: 260px;
+}
+
+.gallery-side-top,
+.gallery-side-bottom {
+  height: 180px;
+  border-radius: 24px;
+}
+
+.clean-box {
+  padding: 20px;
+}
 
       .card-photo,
       .photo-large,
@@ -633,24 +724,24 @@
           </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="card-photo photo-small-top">
-            <img src="interier.jpg" alt="Interiér kníhkupectva" />
-          </div>
+        <div class="hero-visual clean-gallery">
+  <div class="gallery-main">
+    <img src="foto3.jpg" alt="Knihy na pulte" />
+  </div>
 
-          <div class="card-photo photo-small-circle">
-            <img src="caje.jpg" alt="Ponuka kníhkupectva" />
-          </div>
+  <div class="gallery-side gallery-side-top">
+    <img src="foto1.jpg" alt="Interiér kníhkupectva" />
+  </div>
 
-          <div class="card-photo photo-large">
-            <img src="knihy.jpg" alt="Knihy na pulte" />
-          </div>
+  <div class="gallery-side gallery-side-bottom">
+    <img src="foto2.jpg" alt="Ponuka kníhkupectva" />
+  </div>
 
-          <div class="floating-box">
-            <strong>Príďte si oddýchnuť</strong>
-            <p>U nás nejde len o nákup. Chceme, aby ste sa cítili príjemne a radi sa vracali.</p>
-          </div>
-        </div>
+  <div class="floating-box clean-box">
+    <strong>Príďte si oddýchnuť</strong>
+    <p>U nás nejde len o nákup. Chceme, aby ste sa cítili príjemne a radi sa vracali.</p>
+  </div>
+</div>
       </div>
     </section>
 
